@@ -4,7 +4,7 @@ ruby "2.3.0"
 
 gem "sinatra"
 gem "thin"
-gem "instagram"
+gem "rest-client"
 
 group :development do
   gem "better_errors"
