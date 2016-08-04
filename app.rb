@@ -4,12 +4,15 @@ require 'rest-client'
 require 'better_errors'
 require "net/http"
 require "uri"
+require "sinatra/activerecord"
 
 
 configure :development do
   use BetterErrors::Middleware
   BetterErrors.application_root = __dir__
 end
+
+set :database_file, "config/database.yml"
 
 
 enable :sessions
