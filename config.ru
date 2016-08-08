@@ -1,2 +1,2 @@
-require './bustales'
+require './app'
 run Sinatra::Application

@@ -8,6 +8,7 @@ gem "rest-client"
 gem "sinatra-activerecord"
 gem "mysql2"
 gem "rake"
+gem "tux"
 
 group :development do
   gem "better_errors"
