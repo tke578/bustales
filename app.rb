@@ -24,6 +24,7 @@ enable :sessions
 CALLBACK_URL = "http://localhost:4567/oauth/callback"
 CLIENT_ID = ENV['CLIENT_ID']
 CLIENT_SECRET = ENV['CLIENT_SECRET']
+ACCESS_TOKEN = ''
 
 
 get '/' do
@@ -41,12 +42,15 @@ get "/oauth/callback" do
 		request.set_form_data({"client_id" => CLIENT_ID, "client_secret" => CLIENT_SECRET, "grant_type" => "authorization_code", "redirect_uri" => CALLBACK_URL, "code" => params[:code]})
 		response = http.request(request)
 		response_body= JSON.parse(response.body)
-		raise
+		ACCESS_TOKEN << response_body["access_token"]
 
-		RestClient.get 'https://api.instagram.com/v1/users/self/media/recent/', {:params => {'access_token' => response_body["access_token"]}}
+		redirect "/sync"
 	end
-
-
-	
-  
 end
+
+get "/sync" do
+	dirty_resposne = RestClient.get 'https://api.instagram.com/v1/users/self/media/recent/', {:params => {'access_token' => ACCESS_TOKEN }}
+	clean_reponse = JSON.parse(dirty_resposne)
+	raise
+end
+
