@@ -9,6 +9,7 @@ gem "sinatra-activerecord"
 gem "mysql2"
 gem "rake"
 gem "tux"
+gem "seed_dump"
 
 group :development do
   gem "better_errors"

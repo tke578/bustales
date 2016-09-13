@@ -6,6 +6,7 @@ require "net/http"
 require "uri"
 require "sinatra/activerecord"
 require "tux"
+require "seed_dump"
 
 class User < ActiveRecord::Base
 end
