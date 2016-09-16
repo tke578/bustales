@@ -11,6 +11,9 @@ require "seed_dump"
 class User < ActiveRecord::Base
 end
 
+class Credentias < ActiveRecord::Base
+end
+
 
 configure :development do
   use BetterErrors::Middleware
